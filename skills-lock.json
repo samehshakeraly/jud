@@ -49,6 +49,12 @@
       "skillPath": "plugins/hookify/skills/writing-rules/SKILL.md",
       "computedHash": "429463a57a711ee42d1373a726e66ccc2189118022f0c281dbb48b28796d417f"
     },
+    "browser-use": {
+      "source": "browser-use/browser-use",
+      "sourceType": "github",
+      "skillPath": "skills/browser-use/SKILL.md",
+      "computedHash": "9f3a097275554dc44356f37d17d445d9c2b5b3579332fa93a1e9422f465f01bb"
+    },
     "claude-opus-4-5-migration": {
       "source": "anthropics/claude-code",
       "sourceType": "github",
