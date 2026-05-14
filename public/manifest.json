@@ -1,0 +1,19 @@
+{
+  "name": "مَنْ ومَنْ في القرآن الكريم",
+  "short_name": "مَنْ ومَنْ",
+  "description": "آيات القرآن الكريم المبدوءة بـ«مَنْ» و«ومَنْ» مع التفسير والهدايات.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCFBF7",
+  "theme_color": "#8B6A2A",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

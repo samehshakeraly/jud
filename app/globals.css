@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 252 251 247;          /* cream-50 */
+  --bg-elev: 255 255 255;
+  --surface: 248 245 236;     /* cream-100 */
+  --fg: 28 25 23;             /* ink-800 */
+  --fg-muted: 120 113 108;    /* ink-400 */
+  --border: 230 226 215;
+  --accent: 139 106 42;       /* gold-600 */
+  --accent-soft: 244 242 232;
+  --olive: 79 82 48;
+}
+
+.dark {
+  --bg: 17 16 15;
+  --bg-elev: 24 22 20;
+  --surface: 30 28 26;
+  --fg: 235 233 228;
+  --fg-muted: 168 162 155;
+  --border: 55 50 44;
+  --accent: 200 169 90;       /* gold-400 */
+  --accent-soft: 38 34 28;
+  --olive: 164 168 106;
+}
+
+html, body {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
+
+body {
+  font-feature-settings: "ss01" on, "cv01" on;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(101,104,58,0.06) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.dark body {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(200,169,90,0.05) 1px, transparent 0);
+}
+
+/* Reset numerals to Arabic-Indic for Arabic content */
+.arabic-numerals {
+  font-feature-settings: "anum" on;
+}
+
+/* Quran text */
+.quran {
+  font-family: var(--font-amiri-quran), var(--font-amiri), "Scheherazade New", serif;
+  font-feature-settings: "calt", "liga", "kern";
+  line-height: 2.2;
+  letter-spacing: 0;
+  word-spacing: 0.05em;
+}
+
+.quran-lg { font-size: 1.65rem; }
+.quran-xl { font-size: 2rem; }
+.quran-2xl { font-size: 2.5rem; }
+.quran-3xl { font-size: 3.25rem; }
+
+@media (min-width: 768px) {
+  .quran-lg { font-size: 1.85rem; }
+  .quran-xl { font-size: 2.25rem; }
+  .quran-2xl { font-size: 2.85rem; }
+  .quran-3xl { font-size: 3.6rem; }
+}
+
+/* Decorative ornament */
+.ornament {
+  background: linear-gradient(90deg, transparent, rgb(var(--accent)) 50%, transparent);
+  height: 1px;
+  opacity: 0.4;
+}
+
+.ornament-thick {
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent, rgb(var(--accent) / 0.3) 20%,
+    rgb(var(--accent)) 50%,
+    rgb(var(--accent) / 0.3) 80%, transparent);
+}
+
+/* Subtle islamic frame around verse */
+.verse-frame {
+  position: relative;
+  border: 1px solid rgb(var(--border));
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(rgb(var(--bg-elev)), rgb(var(--bg-elev))) padding-box,
+    linear-gradient(135deg, rgb(var(--accent)/0.5), rgb(var(--olive)/0.3) 50%, rgb(var(--accent)/0.5)) border-box;
+  border: 1px solid transparent;
+}
+
+.verse-frame::before,
+.verse-frame::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid rgb(var(--accent));
+  opacity: 0.6;
+  border-radius: 4px;
+}
+.verse-frame::before { top: -1px; right: -1px; border-bottom: none; border-left: none; }
+.verse-frame::after { bottom: -1px; left: -1px; border-top: none; border-right: none; }
+
+/* Verse number circle (Quranic ayah marker style) */
+.ayah-marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3em;
+  height: 2.3em;
+  font-size: 0.55em;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at center, rgb(var(--accent-soft)) 60%, transparent 65%);
+  color: rgb(var(--accent));
+  font-weight: 700;
+  margin: 0 0.3em;
+  position: relative;
+  vertical-align: middle;
+}
+.ayah-marker::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 1.5px solid rgb(var(--accent));
+  opacity: 0.7;
+  -webkit-mask:
+    conic-gradient(from 0deg, #000 0 8deg, transparent 8deg 22deg) repeat;
+}
+
+/* Highlight inside search results */
+mark.q {
+  background: rgb(var(--accent) / 0.18);
+  color: inherit;
+  border-radius: 4px;
+  padding: 0 2px;
+}
+.dark mark.q { background: rgb(var(--accent) / 0.28); }
+
+/* Skeleton */
+.skeleton {
+  background: linear-gradient(90deg,
+    rgb(var(--surface)) 0%, rgb(var(--border)) 50%, rgb(var(--surface)) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+/* Smooth focus ring */
+*:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print */
+@media print {
+  body { background: white; }
+  header, footer, .no-print { display: none !important; }
+}
